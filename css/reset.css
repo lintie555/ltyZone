@@ -95,3 +95,22 @@ ul{
   justify-content: space-between;
   align-items: center;
 }
+
+/* 弹性布局 */
+.flexSb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flexSt {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flexCc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

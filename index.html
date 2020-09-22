@@ -2,27 +2,228 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Document</title>
+		<title>世界上没有第二个如你一般的人</title>
 		<link rel="stylesheet" href="./css/reset.css" />
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.min.js"></script>
-		<link rel="stylesheet" href="./css/reset.css" />
+		<link rel="stylesheet" href="./css/donghua.css" />
+		<script src="./js/vue.min.js"></script>
 		<style>
+			.mhover1{
+				-webkit-transition:all .4s;-moz-transition:all .4s;-o-transition:all .4s;transition:all .4s;
 
+			}
+			.mhover1:hover{
+				transform:scale(1.1);
+			}
+			.mhover2:hover{
+				opacity:0.8;
+			}
+			.main{
+				position:relative;
+				width:100%;
+				height:100%;
+				min-width:1200px;
+				min-height:600px;
+				overflow:auto;
+				background-color: #333;
+			}
+			.main .ripple{
+				animation-duration: 0.6s;
+			}
+			.hBgBox{
+				position:absolute;
+				z-index:1;
+				left:0;
+				bottom:0;
+				width:100%;
+				height:calc(100% - 30px);
+				background-color: #333;
+				background-image: url(./images/hbg001.jpg);
+				/* background-image: url(./images/hbg003.gif); */
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				overflow:hidden;
+			}
+			.hTopMune{
+				background:#333;
+				position:absolute;
+				z-index:8;
+				width:100%;
+				height:30px;
+				top:0;
+				left:0;
+				padding: 0 18px;
+				overflow:hidden;
+				color:#fff;
+				font-size:16px;
+			}
+			.hTopMune .userBox{
+				margin-right:10px;
+				cursor:pointer;
+			}
+			.hTopMune .userHeaderPic{
+				width:24px;
+				height:24px;
+				border-radius:50%;
+				background:#eee;
+				margin-right:10px;
+			}
+			.hTopMune ul li {
+				padding:0 14px;
+				font-size:14px;
+				cursor:pointer;
+			}
+			.hTopMune .hTopMuneTb{
+				margin-right:10px;
+				cursor:pointer;
+			}
+			
+			.hBottomMune{
+				background:rgba(0,0,0,0.5);
+				position:absolute;
+				z-index:8;
+				width:1160px;
+				height:124px;
+				bottom:0;
+				left:50%;
+				margin-left:-580px;
+				border-radius:20px 20px 0 0;
+				padding: 14px 14px 0;
+				overflow:hidden;
+			}
+			.hdlAPP{
+				width:100px;
+				height:110px;
+				color:#fff;
+				text-align:center;
+				font-size:14px;
+				/* background:#999; */
+				cursor:pointer;
+			}
+			.hdlAPP img{
+				width:78px;
+				height:78px;
+				border-radius:16px;
+				background:#E4E4E4;
+				margin-bottom:2px;
+			}
+			.homeBox{
+				position:absolute;
+				/* left:0;
+				top:0; */
+				z-index:2;
+				border-radius:20px;
+				background:#fff;
+				box-shadow:0 0 14px 0 rgba(0,0,0,0.2);
+				min-width:200px;
+				min-height:200px;
+				overflow:auto;
+			}
+			.hNewsBox{
+				width:400px;
+				height:500px;
+				left:30px;
+				top:30px;
+			}
+			.hTimeBox{
+				width:400px;
+				height:500px;
+				right:30px;
+				top:30px;
+			}
+			.weixinBox{
+				width:300px;
+				height:500px;
+				left:20%;
+				top:50px;
+			}
 		</style>
 	</head>
 
 	<body>
+		<div id="app" class="main">
+			<div class="hTopMune flexSb">
+				<div class="flexSt">
+					<div class="userBox flexSt">
+						<img class="userHeaderPic" src="./images/icon002.gif" alt="">
+						<div class="ueser mhover2">啊屁股</div>
+					</div>
+					<ul class="flexSt">
+						<li class="mhover2">
+							开始
+						</li>
+						<li class="mhover2">
+							编辑
+						</li>
+						<li class="mhover2">
+							关于
+						</li>
+					</ul>
+				</div>
+				<div class="flexSt">
+					<img class="hTopMuneTb mhover2" src="./images/icon-zhifubao.png" alt="">
+					<img class="hTopMuneTb mhover2" src="./images/icon-weChat.png" alt="" title="微信" @click="weixinBox = !weixinBox">
+					<img class="hTopMuneTb mhover2" src="./images/icon-kaifa.png" alt="">
+					<img class="hTopMuneTb mhover2" src="./images/icon-wangluo.png" alt="">
+					<div>2020.8.12  12:00</div>
+				</div>
+			</div>
+			
+			<div class="hBgBox">
+				<div class="hNewsBox homeBox">
+					<div>
+						<img style="width:100%;" src="./images/mieba.gif" alt="">
+					</div>
+				</div>
+				<div class="hTimeBox homeBox">
+					<div></div>
+				</div>
+				<div class="weixinBox homeBox ripple zoomIn" v-show="weixinBox">
+					<div>微信</div>
+				</div>
+			</div>
+			
+			
+			<div class="hBottomMune flexSt">
+				<div class="hdlAPP mhover1">
+					<img src="./images/icon001.gif" alt="">
+					<p class="ellipsis_1">更多应用</p>
+				</div>
+				<div class="hdlAPP mhover1">
+					<img src="./images/appTb001.jpg" alt="">
+					<p class="ellipsis_1">店铺装修</p>
+				</div>
+				<div class="hdlAPP mhover1">
+					<img src="./images/appTb001.jpg" alt="">
+					<p class="ellipsis_1">本周记事</p>
+				</div>
+				<div class="hdlAPP mhover1">
+					<img src="./images/icon002.gif" alt="">
+					<p class="ellipsis_1">图库</p>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+		</div>
 
-		
-		
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					weixinBox:false
+				},
+				mounted() {
 
+				},
+				methods: {
 
-
-
-
-
-		<script type="text/javascript">
-
+				}
+			})
 		</script>
 	</body>
 </html>
