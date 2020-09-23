@@ -45,7 +45,7 @@
 				 :class="{ 'zIndex3': seleHomeAppName ==item.appName, 'homeAppBigShow2': homeAppBig == item.appName,'yanshi':!flags }"
 				 :style="{left:item.left+'px',top:item.top+'px',width:item.width+'px',height:item.height+'px'}"
 				 @click="seleHomeApp(item.appName)"
-				 v-show="item.appShow">
+				 v-if="item.appShow">
 					<div class="homeBoxTopNav flexSb"
 						@mousedown="down(index)" @touchstart="down(index)"
 						@mousemove="move(index)" @touchmove.prevent="move(index)"   
@@ -142,15 +142,15 @@
 							height:420,
 						},
 						{
-							id:"timeBox",
+							id:"zwdzjsBox",
 							appShow:false,
-							appName:"时间",
-							appTb:"./images/appTb001.jpg",
-							appUrl:"./homeHtml/timeBox.html",
-							left:140,
-							top:70,
-							width:380,
-							height:500,
+							appName:"植物大战僵尸",
+							appTb:"./images/gameTbzwdzjs.jpg",
+							appUrl:"./homeHtml/gameZwdzjs/index.html",
+							left:40,
+							top:10,
+							width:910,
+							height:644,
 						},
 						{
 							id:"newsBox",
