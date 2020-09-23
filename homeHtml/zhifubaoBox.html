@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>微信</title>
+	</head>
+	<title>世界上没有第二个如你一般的人</title>
+	<link rel="stylesheet" href="../css/reset.css" />
+	<!-- <link rel="stylesheet" href="../css/donghua.css" /> -->
+	<link rel="stylesheet" href="../css/home.css" />
+	<script src="../js/vue.min.js"></script>
+	<style type="text/css" scoped>
+		.homeBoxComIframe .box .tb1{
+			width:100px;
+			/* height:157px; */
+			margin:28px auto 14px;
+			display:block;
+		}
+		.homeBoxComIframe .box .tb2{
+			width:208px;
+			height:208px;
+			margin:46px auto 0;
+			display:block;
+		}
+		.homeBoxComIframe .box .yuyan{
+			text-align:right;
+			color:#118eea;
+			font-size:14px;
+			padding:10px 10px 0 0;
+		}
+		.homeBoxComIframe .box .btn{
+			width:238px;
+			height:40px;
+			text-align:center;
+			line-height:38px;
+			color:#fff;
+			font-size:14px;
+			background:#118eea;
+			border-radius:4px;
+			border:1px solid #118eea;
+			margin:0 auto 14px;
+		}
+		.homeBoxComIframe .box .btn2{
+			background:transparent;
+			color:#118eea;
+		}
+		.homeBoxComIframe .box p{
+			text-align:center;
+			color:#999;
+			font-size:14px;
+			margin:10px 0;
+		}
+	</style>
+	<body>
+		<div id="zhifubao" class="homeBoxComIframe">
+			<div class="box" v-show="!tb2">
+				<div class="yuyan mhover2">语言</div>
+				<img class="tb1" src="../images/zhifubao001.jpg" alt="">
+				<div class="btn mhover2" @click="tb2 = true">登陆</div>
+				<div class="btn btn2 mhover2">新用户注册</div>
+				
+			</div>
+			
+			<div class="box" v-show="tb2">
+				<img class="tb2" src="../images/zhifubaoerweima.jpg" alt="">
+				<p>使用支付宝扫一扫登陆</p>
+				<div class="btn mhover2" @click="tb2 = false">返回</div>
+			</div>
+		</div>
+		<script>
+			var app = new Vue({
+				el: '#zhifubao',
+				data: {
+					tb2:false
+				},
+				mounted() {
+					
+				},
+				methods: {
+		
+				}
+			})
+		</script>
+	</body>
+</html>
