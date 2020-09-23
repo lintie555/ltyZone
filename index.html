@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>世界上没有第二个如你一般的人</title>
+		<title>世上再没有第二个如你一般的人</title>
 		<link rel="stylesheet" href="./css/reset.css" />
 		<link rel="stylesheet" href="./css/donghua.css" />
 		<link rel="stylesheet" href="./css/home.css" />
@@ -18,7 +18,7 @@
 						<div class="ueser mhover2">啊屁股</div>
 					</div>
 					<ul class="flexSt">
-						<li class="mhover2">开始</li>
+						<li class="mhover2" @click="hTopPopBox = !hTopPopBox">开始</li>
 						<li class="mhover2">编辑</li>
 						<li class="mhover2" @click="openApp('关于')">关于</li>
 					</ul>
@@ -36,15 +36,22 @@
 				</div>
 			</div>
 			
-			<!-- 'left:' + item.left + 'px;top:' + item.top + 'px';width:' + item.width + 'px';height:' + item.height + 'px;' -->
+			<div class="hTopPopBox ripple slideInDown" v-show="hTopPopBox"  @click="hTopPopBox = false">
+				<ul>
+					<li class="flexSt" @click="openApp('关于')"><img src="./images/icon-yun.png" alt="">关于本站</li>
+					<li class="flexSt" @click="shoucangHome"><img src="./images/icon-xingxing.png" alt="">收藏本站</li>
+					<li class="flexSt" @click="chongqiHome"><img src="./images/icon-shuaxin.png" alt="">重启</li>
+					<li class="flexSt" @click="guanji"><img src="./images/icon-guanji.png" alt="">关机</li>
+					<li class="flexSt"><img src="./images/icon-close2.png" alt="">取消</li>
+				</ul>
+			</div>
 			
-			
+			<!-- @click="seleHomeApp(item.appName)" -->
 			<div class="hBgBox" style="background-image: url(./images/hbg001.jpg);">
-				
+				<div class="hBgBoxMengban" v-show="flags"></div>
 				<div class="homeBox ripple zoomIn" v-for="(item,index) in homeAppList"
-				 :class="{ 'zIndex3': seleHomeAppName ==item.appName, 'homeAppBigShow2': homeAppBig == item.appName,'yanshi':!flags }"
+				 :class="{ 'zIndex4': seleHomeAppName ==item.appName, 'homeAppBigShow2': homeAppBig == item.appName,'yanshi':!flags }"
 				 :style="{left:item.left+'px',top:item.top+'px',width:item.width+'px',height:item.height+'px'}"
-				 @click="seleHomeApp(item.appName)"
 				 v-if="item.appShow">
 					<div class="homeBoxTopNav flexSb"
 						@mousedown="down(index)" @touchstart="down(index)"
@@ -53,8 +60,8 @@
 					>
 						<div>{{item.appName}}</div>
 						<div>
-							<img class="homeBoxTb mhover2" src="./images/icon-toBig.png" alt="" title="窗口大小" @click="homeAppBigShowBtn(item.appName)">
-							<img class="homeBoxTb mhover2" src="./images/icon-close.png" alt="" title="关闭" @click="closeApp(item.appName)">
+							<img class="homeBoxTb mhover2" src="./images/icon-toBig.png" alt="" title="窗口大小" @click.stop="homeAppBigShowBtn(item.appName)">
+							<img class="homeBoxTb mhover2" src="./images/icon-close.png" alt="" title="关闭" @click.stop="closeApp(item.appName)">
 						</div>
 					</div>
 					<iframe class="homeBoxCom" :src="item.appUrl" frameborder="0" scrolling="auto"></iframe>
@@ -64,7 +71,7 @@
 			</div>
 			
 			
-			<div class="hMoreAppBox clearfix ripple slideInUp" v-show="hMoreAppBox" @click="hMoreAppBox = !hMoreAppBox">
+			<div class="hMoreAppBox clearfix ripple slideInUp yanshi" :class="hMoreAppBox?'hMoreAppBoxUp':''" @click="hMoreAppBox = !hMoreAppBox">
 				<div class="hdlAPP fl mhover1" v-for="(item,index) in homeAppList" @click.stop="openApp(item.appName)">
 					<img :src="item.appTb" alt="">
 					<p class="ellipsis_1">{{item.appName}}</p>
@@ -78,7 +85,7 @@
 			
 			<div class="hBottomMune ripple slideInUp" v-show="homeAppBig ==''">
 				<div class="hdlAPP mhover1 fl" @click="hMoreAppBox = !hMoreAppBox">
-					<img src="./images/icon001.gif" alt="">
+					<img src="./images/icon002.jpg" alt="">
 					<p class="ellipsis_1">更多应用</p>
 				</div>
 				<div class="hdlAPP mhover1 fl" v-for="(item,index) in homeAppList" v-if="index<11" @click="openApp(item.appName)">
@@ -99,6 +106,7 @@
 			var app = new Vue({
 				el: '#app',
 				data: {
+					hTopPopBox:false,
 					hMoreAppBox:false,
 					seleHomeAppName:"",
 					homeAppBig:"",
@@ -167,7 +175,7 @@
 							id:"aboutBox",
 							appShow:true,
 							appName:"关于",
-							appTb:"./images/appTb001.jpg",
+							appTb:"./images/icon001.gif",
 							appUrl:"./homeHtml/aboutBox.html",
 							left:180,
 							top:110,
@@ -241,6 +249,7 @@
 					// 实现移动端拖拽
 					  down(index){
 						 var app = this.homeAppList[index]
+						 this.seleHomeAppName = app.appName
 					    this.flags = true;
 					    var touch;
 					    if(event.touches){
@@ -278,6 +287,35 @@
 					  end(){
 					    this.flags = false;
 					  },
+					 
+					shoucangHome(sURL){
+						//收藏本站
+						var ctrl=(navigator.userAgent.toLowerCase()).indexOf('mac')!=-1?'Command/Cmd':'Ctrl';
+						sURL = encodeURI(window.location);
+						try{
+						//IE
+							window.external.addFavorite(sURL, "啊屁股为您服务");
+						}catch(e){
+							try{
+								//其他浏览器
+								window.sidebar.addPanel("啊屁股为您服务", sURL, "");
+							}catch(e){
+								alert("加入收藏失败，请使用"+ctrl+"+D进行添加,或手动在浏览器里进行设置.");
+							}
+						}
+					},
+					chongqiHome(){
+						location.reload();
+					},
+					guanji(){
+						 if(confirm("是否关闭本站")){
+							window.opener=null;
+							window.open('','_self');
+							window.close();
+						 }
+						 else{}
+					 }
+					  
 				}
 			})
 		</script>

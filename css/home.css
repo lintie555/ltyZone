@@ -33,6 +33,9 @@ body {
 .zIndex3 {
 	z-index: 3;
 }
+.zIndex4 {
+	z-index: 4;
+}
 
 .main {
 	position: relative;
@@ -52,12 +55,16 @@ body {
 	position: fixed;
 	z-index: 6;
 	left: 0;
-	bottom: 0;
+	bottom: -100%;
 	width: 100%;
 	height: calc(100% - 30px);
 	background-color: rgba(20, 20, 20, 0.9);
 	overflow: hidden;
 	padding: 30px 30px 150px;
+}
+.hMoreAppBoxUp{
+	bottom:0;
+	opacity: 1;
 }
 
 .hBgBox {
@@ -74,6 +81,16 @@ body {
 	background-size: cover;
 	overflow: hidden;
 }
+.hBgBox .hBgBoxMengban{
+	position: absolute;
+	z-index:3;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	/* background:rgba(0,0,0,0.5); */
+}
+
 
 .hTopMune {
 	background: #333;
@@ -112,6 +129,34 @@ body {
 	margin-right: 10px;
 	cursor: pointer;
 	font-size: 12px;
+}
+
+.hTopPopBox{
+	position:fixed;
+	left:0;
+	top:30px;
+	width:280px;
+	border-radius:0 0 14px 14px;
+	background:#555;
+	box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
+	color:#fff;
+	z-index:7;
+	overflow:hidden;
+	font-size:14px;
+}
+.hTopPopBox ul li{
+	margin:2px 0;
+	padding:10px 20px;
+	background:#444;
+	cursor: pointer;
+}
+.hTopPopBox ul li:hover{
+	background:#333;
+}
+.hTopPopBox ul li img{
+	width:20px;
+	height:20px;
+	margin-right:6px;
 }
 
 .hBottomMune {
