@@ -58,7 +58,7 @@ body {
 	bottom: -100%;
 	width: 100%;
 	height: calc(100% - 30px);
-	background-color: rgba(20, 20, 20, 0.9);
+	background-color: rgba(20, 20, 20, 0.97);
 	overflow: hidden;
 	padding: 30px 30px 150px;
 }
@@ -95,7 +95,7 @@ body {
 .hTopMune {
 	background: #333;
 	position: absolute;
-	z-index: 8;
+	z-index: 11;
 	width: 100%;
 	height: 30px;
 	top: 0;
@@ -131,25 +131,35 @@ body {
 	font-size: 12px;
 }
 
+.hTopPopBoxMengban{
+	position:fixed;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.2);
+	z-index:9;
+}
 .hTopPopBox{
 	position:fixed;
 	left:0;
 	top:30px;
-	width:280px;
-	border-radius:0 0 14px 14px;
+	width:170px;
+	/* border-radius:0 0 4px 4px; */
 	background:#555;
 	box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
 	color:#fff;
-	z-index:7;
-	overflow:hidden;
+	z-index:10;
 	font-size:14px;
 }
+.hTopPopBox2 ul li .hidenBox .hli,
 .hTopPopBox ul li{
 	margin:2px 0;
-	padding:10px 20px;
+	padding:10px 4px 10px 20px;
 	background:#444;
 	cursor: pointer;
 }
+.hTopPopBox2 ul li .hidenBox .hli:hover,
 .hTopPopBox ul li:hover{
 	background:#333;
 }
@@ -157,6 +167,28 @@ body {
 	width:20px;
 	height:20px;
 	margin-right:6px;
+}
+.hTopPopBox2{
+	left: 160px;
+	width: 180px;
+}
+.hTopPopBox2 ul li{
+	position:relative;
+}
+.hTopPopBox2 ul li img{
+	width:16px;
+	height:16px;
+}
+.hTopPopBox2 ul li .hidenBox{
+	position:absolute;
+	display:none;
+	left: 180px;
+	top:-2px;
+	width: 180px;
+	background:#555;
+}
+.hTopPopBox2 ul li:hover .hidenBox{
+	display:block;
 }
 
 .hBottomMune {
@@ -213,6 +245,7 @@ body {
 	text-align: right;
 	color: #fff;
 	font-size: 14px;
+	cursor:move;
 }
 
 .homeBoxCom {

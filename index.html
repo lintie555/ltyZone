@@ -18,9 +18,9 @@
 						<div class="ueser mhover2">啊屁股</div>
 					</div>
 					<ul class="flexSt">
-						<li class="mhover2" @click="hTopPopBox = !hTopPopBox">开始</li>
-						<li class="mhover2">编辑</li>
-						<li class="mhover2" @click="openApp('关于')">关于</li>
+						<li class="mhover2" @click="hTopPopBox = !hTopPopBox , hTopPopBox2=false">开始</li>
+						<li class="mhover2" @click="hTopPopBox2 = !hTopPopBox2 , hTopPopBox=false">编辑</li>
+						<li class="mhover2">技术支持</li>
 					</ul>
 				</div>
 				<div class="flexSt">
@@ -32,19 +32,44 @@
 						<p>80%</p>
 						<img src="./images/icon-dianlian.png" alt="" title="电量">
 					</div>
-					<div>{{timeDiv}}</div>
+					<div style="width:188px;">{{timeDiv}}</div>
 				</div>
 			</div>
 			
-			<div class="hTopPopBox ripple slideInDown" v-show="hTopPopBox"  @click="hTopPopBox = false">
+			<div class="hTopPopBoxMengban" v-show="hTopPopBox || hTopPopBox2" @click="hTopPopBox = false,hTopPopBox2 = false"></div>
+			<div class="hTopPopBox ripple slideInDown" v-show="hTopPopBox" @click="hTopPopBox = false">
 				<ul>
-					<li class="flexSt" @click="openApp('关于')"><img src="./images/icon-yun.png" alt="">关于本站</li>
+					<li class="flexSt" @click="openApp('关于本站')"><img src="./images/icon-yun.png" alt="">关于本站</li>
 					<li class="flexSt" @click="shoucangHome"><img src="./images/icon-xingxing.png" alt="">收藏本站</li>
 					<li class="flexSt" @click="chongqiHome"><img src="./images/icon-shuaxin.png" alt="">重启</li>
 					<li class="flexSt" @click="guanji"><img src="./images/icon-guanji.png" alt="">关机</li>
-					<li class="flexSt"><img src="./images/icon-close2.png" alt="">取消</li>
+					<!-- <li class="flexSt"><img src="./images/icon-close2.png" alt="">取消</li> -->
 				</ul>
 			</div>
+			<div class="hTopPopBox hTopPopBox2 ripple slideInDown" v-show="hTopPopBox2" @click="hTopPopBox2 = false">
+				<ul>
+					<li>
+						<div class="flexSb">新建 <img src="./images/icon-xiangyou.png" alt=""></div>
+						<div class="hidenBox">
+							<div class="hli">新建应用</div>
+							<div class="hli">新建文本</div>
+							<div class="hli">新建绘图</div>
+						</div>
+					</li>
+					<li>
+						<div class="flexSb">显示 <img src="./images/icon-xiangyou.png" alt=""></div>
+						<div class="hidenBox">
+							<div class="hli">更换壁纸</div>
+							<div class="hli">图标大</div>
+							<div class="hli">图标中</div>
+							<div class="hli">图标小</div>
+						</div>
+					</li>
+					<li class="flexSt">任务管理器</li>
+				</ul>
+			</div>
+			
+			
 			
 			<!-- @click="seleHomeApp(item.appName)" -->
 			<div class="hBgBox" style="background-image: url(./images/hbg001.jpg);">
@@ -66,9 +91,10 @@
 					</div>
 					<iframe class="homeBoxCom" :src="item.appUrl" frameborder="0" scrolling="auto"></iframe>
 				</div>
-				
-				
 			</div>
+			
+			
+			
 			
 			
 			<div class="hMoreAppBox clearfix ripple slideInUp yanshi" :class="hMoreAppBox?'hMoreAppBoxUp':''" @click="hMoreAppBox = !hMoreAppBox">
@@ -77,15 +103,9 @@
 					<p class="ellipsis_1">{{item.appName}}</p>
 				</div>
 			</div>
-			
-			
-			
-			
-			
-			
 			<div class="hBottomMune ripple slideInUp" v-show="homeAppBig ==''">
 				<div class="hdlAPP mhover1 fl" @click="hMoreAppBox = !hMoreAppBox">
-					<img src="./images/icon002.jpg" alt="">
+					<img src="./images/icon003.gif" alt="">
 					<p class="ellipsis_1">更多应用</p>
 				</div>
 				<div class="hdlAPP mhover1 fl" v-for="(item,index) in homeAppList" v-if="index<11" @click="openApp(item.appName)">
@@ -107,10 +127,11 @@
 				el: '#app',
 				data: {
 					hTopPopBox:false,
+					hTopPopBox2:false,
 					hMoreAppBox:false,
 					seleHomeAppName:"",
 					homeAppBig:"",
-					timeDiv:"0000年00月00日  00:00:00",
+					timeDiv:"2020年12月00日  11:23:06",
 					flags: false,
 					position: { x: 0, y: 0 },
 					nx: '', ny: '', dx: '', dy: '', xPum: '', yPum: '',
@@ -122,9 +143,9 @@
 							appName:"图库",
 							appTb:"./images/icon002.gif",
 							appUrl:"./homeHtml/tukuBox.html",
-							left:100,
+							left:200,
 							top:30,
-							width:380,
+							width:780,
 							height:500,
 						},
 						{
@@ -161,12 +182,45 @@
 							height:644,
 						},
 						{
+							id:"wangyiyunMusicBox",
+							appShow:false,
+							appName:"酷我音乐",
+							appTb:"./images/appTbkuwo.jpeg",
+							appUrl:"https://www.kuwo.cn/",
+							left:10,
+							top:20,
+							width:1100,
+							height:600,
+						},
+						{
 							id:"newsBox",
 							appShow:false,
-							appName:"新闻",
-							appTb:"./images/appTb001.jpg",
-							appUrl:"./homeHtml/newsBox.html",
+							appName:"网易新闻",
+							appTb:"./images/appTbwynews.jpg",
+							appUrl:"https://3g.163.com/touch/news/",
 							left:160,
+							top:90,
+							width:380,
+							height:500,
+						},
+						{
+							id:"zuopinBox",
+							appShow:false,
+							appName:"啊屁股的作品",
+							appTb:"./images/appTb001.jpg",
+							appUrl:"./homeHtml/zuopinBox.html",
+							left:160,
+							top:90,
+							width:380,
+							height:500,
+						},
+						{
+							id:"tianqiBox",
+							appShow:false,
+							appName:"天气",
+							appTb:"./images/appTbtianqi.jpg",
+							appUrl:"http://waptianqi.2345.com/wenzhou-58659.htm",
+							left:800,
 							top:90,
 							width:380,
 							height:500,
@@ -174,14 +228,15 @@
 						{
 							id:"aboutBox",
 							appShow:true,
-							appName:"关于",
+							appName:"关于本站",
 							appTb:"./images/icon001.gif",
 							appUrl:"./homeHtml/aboutBox.html",
 							left:180,
 							top:110,
 							width:380,
 							height:500,
-						},
+						}
+						
 					]
 				},
 				mounted() {
@@ -305,7 +360,10 @@
 						}
 					},
 					chongqiHome(){
-						location.reload();
+						if(confirm("是否重启本站")){
+							location.reload();
+						}
+						else{}
 					},
 					guanji(){
 						 if(confirm("是否关闭本站")){
