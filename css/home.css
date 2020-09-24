@@ -59,7 +59,7 @@ body {
 	width: 100%;
 	height: calc(100% - 30px);
 	background-color: rgba(20, 20, 20, 0.97);
-	overflow: hidden;
+	overflow: auto;
 	padding: 30px 30px 150px;
 }
 .hMoreAppBoxUp{

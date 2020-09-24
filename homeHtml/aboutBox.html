@@ -14,22 +14,27 @@
 		.homeBoxComIframe .box{
 			font-size:14px;
 			color:#333;
-			padding-top:12px;
+			padding-top:14px;
+		}
+		.homeBoxComIframe .box dl{
+			margin-bottom:30px;
+			border-bottom:1px solid #eee;
+		}
+		.homeBoxComIframe .box dt{
+			padding:0 0 10px 20px;
+			color:#666;
+		}
+		.homeBoxComIframe .box dd{
+			padding:10px 10px 10px 20px;
+			/* margin-bottom:1px; */
+			background:#fff;
+			line-height:26px;
+			font-size:16px;
+			border-top:1px solid #eee;
 		}
 		.homeBoxComIframe .box i{
 			display:inline-block;
 			width:28px;
-		}
-		.homeBoxComIframe .box p{
-			padding:10px 20px;
-			margin-bottom:10px;
-			background:#fff;
-			line-height:26px;
-		}
-		.homeBoxComIframe .box .hspan{
-			display:inline-block;
-			color:#999;
-			width:60px;
 		}
 		.fc999{
 			color:#999;
@@ -40,37 +45,48 @@
 		.fc50c7ff{
 			color:#50C7FF;
 		}
+		.homeBoxComIframe .box .text{
+			padding:10px 0;
+			font-size:14px;
+		}
 	</style>
 	<body>
 		<div class="homeBoxComIframe">
 			<div class="box">
-				<p><span class="hspan">版本号：</span>1.0</p>
-				<p><span class="hspan">序列号：</span>202009320938</p>
-				<p><span class="hspan">开发者：</span>啊屁股</p>
-				<p>
-					简介：<br>
-					<i></i>大家好，我是本站作者-啊屁股
-					<br>
-					<i></i>本站是由在下全程手写开发，
-					因为在下只会前端，
-					所以都由静态页面组成，
-					若是有机会学好一门后端语言，会再进行优化调整。
-					<br>
-					<i></i>若是各位想支持在下，请点击右上角的 <span class="fc50c7ff">支付宝/微信</span> 图标，比心。
-					<br>
-					<i></i>本站基于vue.js，由于是布在gitHub上，
-					目前在下还不会在这上面跑服务，所以是直接引入的vue.js包
-					所以很多功能十分简陋，但是本站主要以展示 
-					<span class="fcdd6161">UI交互设计</span> 和 <span class="fcdd6161">创新页面构成想法</span> 为主。
-					为的就是打破传统网页局限性。还请大家多多指点。
-				</p>
-				<p>
-					在下的联系方式：<br>
-					<i></i>微信：zhanyuegui <br>
-					<i></i><span class="fc999">（微信王者荣耀可接代练，直冲荣耀）</span><br>
-					<i></i> Q Q：2804803784
-					
-				</p>
+				<dl>
+					<dt></dt>
+					<dd class="flexSb"><span>版本号</span><span class="fc999">1.0</span></dd>
+					<dd class="flexSb"><span>序列号</span><span class="fc999">202009320938</span></dd>
+					<dd class="flexSb"><span>开发者</span><span class="fc999">啊屁股</span></dd>
+				</dl>
+				
+				<dl>
+					<dt>简介</dt>
+					<dd>
+						<div class="text">
+							<i></i>大家好，我是本站作者-啊屁股
+							<br>
+							<i></i>本站是由在下全程手写开发，目前用作博客展示，
+							因为在下只会前端，
+							所以整站都由静态页面组成，
+							若是学好一门后端语言，会再进行优化调整。
+							<br>
+							<i></i>若是各位想支持在下，请点击右上角的 <span class="fc50c7ff">支付宝/微信</span> 图标，比心。
+							<br>
+							<i></i>本站基于vue.js，由于是布在gitHub上，
+							目前在下还不会在这上面跑服务，所以是直接引入的vue.js包
+							所以功能有很多局限性，但是本站主要以展示 
+							<span class="fcdd6161">UI交互设计</span> 和 <span class="fcdd6161">创新页面构成想法</span> 为主。
+							为的就是打破传统网页局限性。还请大家多多指点。
+						</div>
+					</dd>
+				</dl>
+				
+				<dl>
+					<dt class="flexSb">联系方式（微信王者荣耀可接代练，直冲荣耀）</dt>
+					<dd class="flexSb"><span>微信</span><span>zhanyuegui</span> </dd>
+					<dd class="flexSb"><span>Q Q</span><span>2804803784</span></dd>
+				</dl>
 			</div>
 		</div>
 		

@@ -2,11 +2,12 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>新闻</title>
+		<title>作品</title>
 	</head>
 	<title></title>
 	<link rel="stylesheet" href="../css/reset.css" />
 	<link rel="stylesheet" href="../css/home.css" />
+	<script src="../js/vue.min.js"></script>
 	<style type="text/css" scoped>
 		.homeBoxComIframe{
 			background:#f5f5f5;
@@ -14,24 +15,43 @@
 		.homeBoxComIframe .box{
 			font-size:14px;
 			color:#333;
-			padding-top:12px;
+			padding-top:30px;
 		}
-		.homeBoxComIframe .box i{
-			display:inline-block;
-			width:28px;
+		.homeBoxComIframe .box dl{
+			margin-bottom:30px;
+			border-bottom:1px solid #eee;
 		}
-		.homeBoxComIframe .box p{
-			padding:10px 20px;
-			margin-bottom:10px;
+		.homeBoxComIframe .box dt{
+			padding:0 0 10px 20px;
+			color:#666;
+		}
+		.homeBoxComIframe .box dd{
+			padding:10px 10px 10px 20px;
+			/* margin-bottom:1px; */
 			background:#fff;
 			line-height:26px;
+			font-size:16px;
+			border-top:1px solid #eee;
 		}
-		.homeBoxComIframe .box .hspan{
-			/* background-image: url(./images/hbg001.jpg); */
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: cover;
+		.homeBoxComIframe .box dd .tb1{
+			width:26px;
+			height:26px;
+			margin-right:10px;
+			border-radius:6px;
+			background:#eee;
 		}
+		.homeBoxComIframe .box dd .tb2{
+			width:16px;
+			/* height:20px; */
+		}
+		.homeBoxComIframe .box dd a{
+			text-decoration: none;
+			font-size:inherit;
+			color:#333;
+		}
+
+	
+		
 		.fc999{
 			color:#999;
 		}
@@ -43,15 +63,110 @@
 		}
 	</style>
 	<body>
-		<div class="homeBoxComIframe">
+		<div id="zuopin" class="homeBoxComIframe">
 			<div class="box">
-				<ul>
-					<li>
-						<img src="" alt="">
-						<p></p>
-					</li>
-				</ul>
+				<dl v-for="(item,index) in list">
+					<dt>{{item.title}}</dt>
+					<dd  v-for="(item2,index2) in item.zplist">
+						<a class="flexSb" :href="item2.url" target="_blank">
+							<div class="flexSt"><img class="tb1" :src="item2.logo" alt="">{{item2.name}}</div> 
+							<img v-show="item2.url" class="tb2" src="../images/icon-xiangyou2.png" alt="">
+						</a>
+					</dd>
+				</dl>
 			</div>
 		</div>
+		
+		<script>
+			var app = new Vue({
+				el: '#zuopin',
+				data: {
+					list:[
+						{
+							title:'网页',
+							zplist:[
+								{
+									url:'./zuopin/decoration/index.html',
+									name:'店铺装修功能',
+									logo:'./zuopin/decoration/logo.jpg'	
+								},
+								{
+									url:'./zuopin/juna/index.html',
+									name:'巨纳着陆页',
+									logo:'./zuopin/juna/logo.jpg'	
+								},
+								{
+									url:'./zuopin/disheng/index.html',
+									name:'迪盛着陆页',
+									logo:'./zuopin/disheng/logo.jpg'	
+								},
+							]
+						},
+						{
+							title:'APP',
+							zplist:[
+								{
+									url:'https://apps.apple.com/cn/app/%E9%9E%8B%E7%BD%91%E9%80%9A/id1509374536',
+									name:'鞋网通（原生开发 OC+Swift）',
+									logo:'./zuopin/xwt.jpg'	
+								},
+								{
+									url:'https://apps.apple.com/cn/app/shoestp/id1466914207',
+									name:'鞋贸港（原生开发 OC+Swift）',
+									logo:'./zuopin/xmg.jpg'	
+								},
+							]
+						},
+						{
+							title:'小程序',
+							zplist:[
+								{
+									url:'',
+									name:'鞋乐购',
+									logo:''	
+								},
+								{
+									url:'',
+									name:'大爱创',
+									logo:''	
+								},
+								{
+									url:'',
+									name:'鞋料巴巴',
+									logo:''	
+								},
+								{
+									url:'',
+									name:'协走力量',
+									logo:''	
+								},
+								{
+									url:'',
+									name:'里程呗',
+									logo:''	
+								},
+							]
+						},
+						{
+							title:'平面/UI设计',
+							zplist:[
+								{
+									url:'',
+									name:'',
+									logo:''	
+								},
+							]
+						},
+					]
+				},
+				mounted() {
+					
+				},
+				methods: {
+		
+				}
+			})
+		</script>
+		
 	</body>
 </html>
