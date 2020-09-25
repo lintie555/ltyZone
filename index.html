@@ -98,7 +98,7 @@
 			
 			
 			<div class="hMoreAppBox clearfix ripple slideInUp yanshi" :class="hMoreAppBox?'hMoreAppBoxUp':''" @click="hMoreAppBox = !hMoreAppBox">
-				<div class="hdlAPP fl mhover1" v-for="(item,index) in homeAppList" @click.stop="openApp(item.appName)">
+				<div class="hdlAPP fl mhover2" v-for="(item,index) in homeAppList" @click.stop="openApp(item.appName)">
 					<img :src="item.appTb" alt="">
 					<p class="ellipsis_1">{{item.appName}}</p>
 				</div>
@@ -219,11 +219,11 @@
 							appShow:false,
 							appName:"天气",
 							appTb:"./images/appTbtianqi.jpg",
-							appUrl:"http://waptianqi.2345.com/wenzhou-58659.htm",
+							appUrl:"http://m.hao123.com/a/tianqi",
 							left:800,
 							top:90,
-							width:380,
-							height:500,
+							width:400,
+							height:400,
 						},
 						{
 							id:"zhuangxiouBox",
@@ -246,7 +246,9 @@
 							top:110,
 							width:380,
 							height:500,
-						}
+						},
+						
+	
 						
 					]
 				},
