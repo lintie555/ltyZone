@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>任务计划</title>
+	</head>
+	<title></title>
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/home.css" />
+	<script src="../js/vue.min.js"></script>
+	<style type="text/css" scoped>
+		
+	</style>
+	<body>
+		<div id="renwuguanli" class="homeBoxComIframe">
+			<div class="HxtBox">
+				<dl>
+					<dt></dt>
+					<dd @click="appBtn(1,'关于本站')">
+						关闭 关于本站APP {{title}}
+					</dd>
+				</dl>
+			</div>
+		</div>
+
+		<script>
+			var renwuguanliBox = new Vue({
+				el: '#renwuguanli',
+				data: {
+					list:[],
+					title:''
+				},
+				mounted() {
+					 
+				},
+				methods: {
+					appBtn(type,com) {
+						window.parent.postMessage({
+							"type":type,
+							"com":com
+						}, '*');
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

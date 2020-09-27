@@ -53,19 +53,21 @@
 						<div class="hidenBox">
 							<div class="hli">新建应用</div>
 							<div class="hli">新建文本</div>
+							
+							
 							<div class="hli">新建绘图</div>
 						</div>
 					</li>
 					<li>
 						<div class="flexSb">显示 <img src="./images/icon-xiangyou.png" alt=""></div>
 						<div class="hidenBox">
-							<div class="hli">更换壁纸</div>
+							<div class="hli" @click="openApp('壁纸')">更换壁纸</div>
 							<div class="hli">图标大</div>
 							<div class="hli">图标中</div>
 							<div class="hli">图标小</div>
 						</div>
 					</li>
-					<li class="flexSt">任务管理器</li>
+					<li class="flexSt" @click="openApp('任务管理器')">任务管理器</li>
 				</ul>
 			</div>
 			
@@ -89,7 +91,23 @@
 							<img class="homeBoxTb mhover2" src="./images/icon-close.png" alt="" title="关闭" @click.stop="closeApp(item.appName)">
 						</div>
 					</div>
-					<iframe class="homeBoxCom" :src="item.appUrl" frameborder="0" scrolling="auto"></iframe>
+					<div class="homeBoxCom" v-if="item.appName == '任务管理器'">
+						<div class="homeBoxComIframe">
+							<div class="HxtBox">
+								<dl>
+									<dt>当前运行</dt>
+									<dd v-for="(item3,index3) in homeAppList" v-show="item3.appShow" class="flexSb">
+										<div class="flexSt"><img class="tb1" :src="item3.appTb" alt="">{{item3.appName}}</div> 
+										<img class="tb2 mhover2" src="./images/icon-close3.png" alt="" @click.stop="closeApp(item3.appName)">
+									</dd>
+								</dl>
+								<dl>
+									<dd class="curP" @click.stop="closeAllApp">关闭全部运行</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+					<iframe v-else class="homeBoxCom" :src="item.appUrl" frameborder="0" scrolling="auto" :ref="item.id"></iframe>
 				</div>
 			</div>
 			
@@ -108,7 +126,7 @@
 					<img src="./images/icon003.gif" alt="">
 					<p class="ellipsis_1">更多应用</p>
 				</div>
-				<div class="hdlAPP mhover1 fl" v-for="(item,index) in homeAppList" v-if="index<11" @click="openApp(item.appName)">
+				<div class="hdlAPP mhover1 fl ripple zoomIn" v-for="(item,index) in homeAppList" v-if="index<11" @click="openApp(item.appName)">
 					<img :src="item.appTb" alt="">
 					<p class="ellipsis_1">{{item.appName}}</p>
 				</div>
@@ -123,7 +141,7 @@
 		</div>
 
 		<script>
-			var app = new Vue({
+			var vm = new Vue({
 				el: '#app',
 				data: {
 					hTopPopBox:false,
@@ -141,7 +159,7 @@
 							id:"tukuBox",
 							appShow:false,
 							appName:"图库",
-							appTb:"./images/icon002.gif",
+							appTb:"./images/appTbtuku.png",
 							appUrl:"./homeHtml/tukuBox.html",
 							left:200,
 							top:30,
@@ -218,7 +236,7 @@
 							id:"tianqiBox",
 							appShow:false,
 							appName:"天气",
-							appTb:"./images/appTbtianqi.jpg",
+							appTb:"./images/appTbtianqi.png",
 							appUrl:"http://m.hao123.com/a/tianqi",
 							left:800,
 							top:90,
@@ -235,6 +253,39 @@
 							top:10,
 							width:1190,
 							height:580,
+						},
+						{
+							id:"renwujihuaBox",
+							appShow:false,
+							appName:"任务计划",
+							appTb:"./images/appTbrenwujihua.png",
+							appUrl:"./homeHtml/renwujihuaBox.html",
+							left:770,
+							top:60,
+							width:380,
+							height:500,
+						},
+						{
+							id:"renwuguanliBox",
+							appShow:false,
+							appName:"任务管理器",
+							appTb:"./images/icon002.gif",
+							appUrl:"./homeHtml/renwuguanliBox.html",
+							left:800,
+							top:30,
+							width:380,
+							height:500,
+						},
+						{
+							id:"bizhiBox",
+							appShow:false,
+							appName:"壁纸",
+							appTb:"./images/appTbbizhi.png",
+							appUrl:"./homeHtml/bizhiBox.html",
+							left:740,
+							top:30,
+							width:360,
+							height:500,
 						},
 						{
 							id:"aboutBox",
@@ -254,6 +305,20 @@
 				},
 				mounted() {
 					this.start()
+					
+					var that = this
+					window.addEventListener('message', function(e){
+						console.log(e)
+						if(e.data.type == 0){
+							that.openApp(e.data.com)
+						}else if(e.data.type == 1){
+							that.closeApp(e.data.com)
+						}else if(e.data.type == 2){
+							that.closeAllApp()
+						}
+					})
+					
+					
 				},
 				methods: {
 					seleHomeApp(name){
@@ -274,6 +339,13 @@
 								this.homeAppList[i].appShow = false
 								this.homeAppBig = ""
 							}
+						}
+					},
+					closeAllApp(){
+						for(var i=0;i<this.homeAppList.length;i++){
+								this.homeAppList[i].appShow = false
+								this.homeAppBig = ""
+								this.seleHomeAppName = ""
 						}
 					},
 					homeAppBigShowBtn(name){

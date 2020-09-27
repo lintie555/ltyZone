@@ -50,6 +50,9 @@ ul{
 .tc{
   text-align: center;
 }
+.curP{
+	cursor: pointer;
+}
 /* 两行省略号 */
 .ellipsis_1{
     overflow: hidden;

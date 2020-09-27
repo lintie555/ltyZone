@@ -5,7 +5,7 @@ body {
 	user-select: none;
 }
 
-.yanshi{
+.yanshi {
 	-webkit-transition: all .4s;
 	-moz-transition: all .4s;
 	-o-transition: all .4s;
@@ -22,7 +22,7 @@ body {
 .mhover1:hover {
 	cursor: pointer;
 	/* transform: scale(1.1); */
-	margin-top:-10px;
+	margin-top: -10px;
 }
 
 .mhover2:hover {
@@ -33,6 +33,7 @@ body {
 .zIndex3 {
 	z-index: 3;
 }
+
 .zIndex4 {
 	z-index: 4;
 }
@@ -61,13 +62,16 @@ body {
 	background-color: rgba(20, 20, 20, 0.97);
 	overflow: auto;
 	padding: 30px 30px 150px;
+	min-width:1200px;
 }
-.hMoreAppBoxUp{
-	bottom:0;
+
+.hMoreAppBoxUp {
+	bottom: 0;
 	opacity: 1;
 }
-.hMoreAppBox .hdlAPP{
-	margin-bottom:20px;
+
+.hMoreAppBox .hdlAPP {
+	margin-bottom: 20px;
 }
 
 .hBgBox {
@@ -84,9 +88,10 @@ body {
 	background-size: cover;
 	overflow: hidden;
 }
-.hBgBox .hBgBoxMengban{
+
+.hBgBox .hBgBoxMengban {
 	position: absolute;
-	z-index:3;
+	z-index: 3;
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -134,64 +139,73 @@ body {
 	font-size: 12px;
 }
 
-.hTopPopBoxMengban{
-	position:fixed;
-	left:0;
-	top:0;
-	width:100%;
-	height:100%;
-	background:rgba(0,0,0,0.2);
-	z-index:9;
+.hTopPopBoxMengban {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.2);
+	z-index: 9;
 }
-.hTopPopBox{
-	position:fixed;
-	left:0;
-	top:30px;
-	width:170px;
+
+.hTopPopBox {
+	position: fixed;
+	left: 0;
+	top: 30px;
+	width: 170px;
 	/* border-radius:0 0 4px 4px; */
-	background:#555;
+	background: #555;
 	box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
-	color:#fff;
-	z-index:10;
-	font-size:14px;
+	color: #fff;
+	z-index: 10;
+	font-size: 14px;
 }
+
 .hTopPopBox2 ul li .hidenBox .hli,
-.hTopPopBox ul li{
-	margin:2px 0;
-	padding:10px 4px 10px 20px;
-	background:#444;
+.hTopPopBox ul li {
+	margin: 2px 0;
+	padding: 10px 4px 10px 20px;
+	background: #444;
 	cursor: pointer;
 }
+
 .hTopPopBox2 ul li .hidenBox .hli:hover,
-.hTopPopBox ul li:hover{
-	background:#333;
+.hTopPopBox ul li:hover {
+	background: #333;
 }
-.hTopPopBox ul li img{
-	width:20px;
-	height:20px;
-	margin-right:6px;
+
+.hTopPopBox ul li img {
+	width: 20px;
+	height: 20px;
+	margin-right: 6px;
 }
-.hTopPopBox2{
+
+.hTopPopBox2 {
 	left: 160px;
 	width: 180px;
 }
-.hTopPopBox2 ul li{
-	position:relative;
+
+.hTopPopBox2 ul li {
+	position: relative;
 }
-.hTopPopBox2 ul li img{
-	width:16px;
-	height:16px;
+
+.hTopPopBox2 ul li img {
+	width: 16px;
+	height: 16px;
 }
-.hTopPopBox2 ul li .hidenBox{
-	position:absolute;
-	display:none;
+
+.hTopPopBox2 ul li .hidenBox {
+	position: absolute;
+	display: none;
 	left: 180px;
-	top:-2px;
+	top: -2px;
 	width: 180px;
-	background:#555;
+	background: #555;
 }
-.hTopPopBox2 ul li:hover .hidenBox{
-	display:block;
+
+.hTopPopBox2 ul li:hover .hidenBox {
+	display: block;
 }
 
 .hBottomMune {
@@ -222,7 +236,7 @@ body {
 	width: 64px;
 	height: 64px;
 	border-radius: 16px;
-	background: #E4E4E4;
+	/* background: #E4E4E4; */
 	margin-bottom: 4px;
 }
 
@@ -248,7 +262,7 @@ body {
 	text-align: right;
 	color: #fff;
 	font-size: 14px;
-	cursor:move;
+	cursor: move;
 }
 
 .homeBoxCom {
@@ -260,13 +274,14 @@ body {
 	overflow: hidden;
 }
 
-.homeBoxComIframe{
-	position:absolute;
-	width:100%;
-	height:100%;
-	left:0;
-	top:0;
-	overflow:auto;
+.homeBoxComIframe {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	overflow: auto;
+	background: #f5f5f5;
 }
 
 /*滚动条整体样式*/
@@ -287,11 +302,82 @@ body {
 	background: #ccc;
 }
 
-.homeAppBigShow2{
-	width:100%!important;
-	height:100%!important;
-	left:0!important;
-	top:0!important;
-	bottom:124px!important;
-	border-radius:0!important;
+.homeAppBigShow2 {
+	width: 100% !important;
+	height: 100% !important;
+	left: 0 !important;
+	top: 0 !important;
+	bottom: 124px !important;
+	border-radius: 0 !important;
+}
+
+
+
+.homeBoxComIframe .HxtBox {
+	font-size: 14px;
+	color: #333;
+	padding-top: 14px;
+}
+
+.homeBoxComIframe .HxtBox dl {
+	margin-bottom: 30px;
+	border-bottom: 1px solid #eee;
+}
+
+.homeBoxComIframe .HxtBox dt {
+	padding: 0 0 10px 20px;
+	color: #666;
+}
+
+.homeBoxComIframe .HxtBox dd {
+	padding: 10px 10px 10px 20px;
+	/* margin-bottom:1px; */
+	background: #fff;
+	line-height: 26px;
+	font-size: 16px;
+	border-top: 1px solid #eee;
+}
+.homeBoxComIframe .HxtBox dd:hover{
+	background:#f0f0f0;
+}
+
+.homeBoxComIframe .HxtBox i {
+	display: inline-block;
+	width: 28px;
+}
+
+.homeBoxComIframe .HxtBox .text {
+	padding: 10px 0;
+	font-size: 14px;
+}
+
+.homeBoxComIframe .HxtBox dd .tb1 {
+	width: 26px;
+	height: 26px;
+	margin-right: 10px;
+	border-radius: 6px;
+	background: #eee;
+}
+
+.homeBoxComIframe .HxtBox dd .tb2 {
+	width: 16px;
+	/* height:20px; */
+}
+
+.homeBoxComIframe .HxtBox dd a {
+	text-decoration: none;
+	font-size: inherit;
+	color: #333;
+}
+
+.fc999 {
+	color: #999;
+}
+
+.fcdd6161 {
+	color: #DD6161;
+}
+
+.fc50c7ff {
+	color: #50C7FF;
 }
