@@ -53,8 +53,6 @@
 						<div class="hidenBox">
 							<div class="hli">新建应用</div>
 							<div class="hli">新建文本</div>
-							
-							
 							<div class="hli">新建绘图</div>
 						</div>
 					</li>
@@ -73,8 +71,26 @@
 			
 			
 			
-			<!-- @click="seleHomeApp(item.appName)" -->
-			<div class="hBgBox" style="background-image: url(./images/hbg001.jpg);">
+			<!-- 桌面 -->
+			<div class="hBgBox" :style="'background-image: url(' + bizhi +');'">
+				
+				<!-- 桌面记事本 -->
+				<div class="hBgBoxTxtList clearfix">
+					<div class="hdlAPP fl mhover2" v-for="(item,index) in hTxtList" @click="openTxt(item.txtName)">
+						<img src="./images/appTbrenwujihua.png" alt="">
+						<p class="ellipsis_1">{{item.txtName}}</p>
+					</div>
+				</div>
+				<!-- 桌面记事本end -->
+				
+				<div class="homeBox ripple zoomIn" v-for="(item,index) in hTxtList"
+					:style="{left:item.left+'px',top:item.top+'px',width:item.width+'px',height:item.height+'px'}"
+					v-show="item.txtShow"
+				>
+					<textarea class="homeBoxTextarea" rows="" cols="" v-model="item.txtContent"></textarea>
+				</div>
+				
+				<!-- 桌面窗口 -->
 				<div class="hBgBoxMengban" v-show="flags"></div>
 				<div class="homeBox ripple zoomIn" v-for="(item,index) in homeAppList"
 				 :class="{ 'zIndex4': seleHomeAppName ==item.appName, 'homeAppBigShow2': homeAppBig == item.appName,'yanshi':!flags }"
@@ -109,7 +125,9 @@
 					</div>
 					<iframe v-else class="homeBoxCom" :src="item.appUrl" frameborder="0" scrolling="auto" :ref="item.id"></iframe>
 				</div>
+				<!-- 桌面窗口end -->
 			</div>
+			<!-- 桌面end -->
 			
 			
 			
@@ -153,6 +171,21 @@
 					flags: false,
 					position: { x: 0, y: 0 },
 					nx: '', ny: '', dx: '', dy: '', xPum: '', yPum: '',
+					
+					bizhi:"./images/hbg001.jpg",
+					
+					hTxtList:[
+						{
+							id:"hTxtList",
+							txtShow:false,
+							txtName:"记事本1",
+							txtContent:"我渴望能见你一面，但请你记得，我不会开口要求见你。这不是因为骄傲，你知道我在你面前毫无骄傲可言，而是因为，唯有你也想见我的时候，我们见面才有意义。——西蒙娜·德·波伏娃《越洋情书》",
+							left:30,
+							top:30,
+							width:380,
+							height:500,
+						},
+					],
 					
 					homeAppList:[
 						{
@@ -315,14 +348,28 @@
 							that.closeApp(e.data.com)
 						}else if(e.data.type == 2){
 							that.closeAllApp()
+						}else if(e.data.type == 9){
+							that.changeBizhi(e.data.com)
 						}
 					})
 					
 					
 				},
 				methods: {
+					changeBizhi(url){
+						this.bizhi = url
+					},
 					seleHomeApp(name){
 						this.seleHomeAppName = name
+					},
+					openTxt(name){
+						for(var i=0;i<this.hTxtList.length;i++){
+							if(this.hTxtList[i].txtName == name){
+								// alert(this.hTxtList[i].txtContent)
+								this.hTxtList[i].txtShow = true
+								
+							}
+						}
 					},
 					openApp(name){
 						this.hMoreAppBox = false

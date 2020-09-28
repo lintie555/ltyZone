@@ -2,170 +2,92 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>图库</title>
+		<title>壁纸</title>
 	</head>
 	<title></title>
 	<link rel="stylesheet" href="../css/reset.css" />
 	<link rel="stylesheet" href="../css/home.css" />
 	<script src="../js/vue.min.js"></script>
 	<style type="text/css" scoped>
-		.fcf1995c{
-			color:#f1995c;
-		}
-		.homeBoxComIframe .hTitle{
-			text-align:right;
-			height:30px;
-			line-height:30px;
-			font-size:12px;
-			padding:0 24px;
-			position:fixed;
-			left:0;
-			bottom:0;
-			width:100%;
-			z-index:2;
-			/* border-top: 1px solid rgba(0,0,0,0.1); */
-		}
-		.homeBoxComIframe ul {
-			padding:10px 10px 60px;
-		}
-		.homeBoxComIframe ul li{
-			width:130px;
-			height:160px;
-			text-align:center;
-			margin:6px;
-			padding:6px;
-			position:relative;
-		}
-		.homeBoxComIframe ul li i{
-			position:absolute;
-			z-index:0;
-			left:0;
-			top:0;
-			width:100%;
-			height:100%;
-			background:rgba(0,0,0,0.2);
-			display:none;
-			border-radius:6px;
-		}
-		.homeBoxComIframe ul li:hover i{
-			display:block;
-		}
-		.homeBoxComIframe ul li .hPic{
-			width:120px;
-			height:120px;
-			line-height:120px;
-			text-align:center;
-			margin-bottom:8px;
-		}
-		.homeBoxComIframe ul li .hPic img{
-			max-width:120px;
-			max-height:120px;
-		}
-		.homeBoxComIframe ul li a{
-			display: block;
-			text-decoration: none;
-			font-size:14px;
-			position:relative;
-			z-index:1;
-		}
-			
+			.HxtBoxPic{
+				width:300px;
+				height:100px;
+				border-radius:14px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				overflow: hidden;
+				margin:0 auto;
+			}
+			.HxtBoxInput{
+				background:transparent;
+				width:100%;
+				height:100%;
+				display:block;
+				font-size:16px;
+			}
 	</style>
 	<body>
-		<div id="tuku" class="homeBoxComIframe" :style="{background:heimu?'#666':'#fff'}">
-			<div class="box">
-				<div class="hTitle" :style="{color:heimu?'#fff':'#666',background:heimu?'#333':'#f5f5f5'}">
-					<span class="fcf1995c">图片{{heimu?'偏暗':'偏亮'}}看不清？没关系，啊屁股为您提供 </span>
-					<b class="mhover2" @click="heimu=!heimu">{{heimu?'白慕模式':'暗幕模式'}}</b>
-				</div>
-				
-				<ul class="clearfix">
-					<li class="fl" v-for="(item,index) in picList">
-						<a target="_blank" :href="item.url" :style="{color:heimu?'#fff':'#666'}">
-							<div class="hPic">
-								<img :src="item.url" alt="">
-							</div>
-							<p>{{item.name}}</p>
-						</a>
-						<i :style="{background:heimu?'rgba(255,255,255,0.2)':'rgba(0,0,0,0.2)'}"></i>
-					</li>
-				</ul>
+		<div id="bizhi" class="homeBoxComIframe">
+			<div class="HxtBox">
+				<dl>
+					<dt>选择更换壁纸</dt>
+					<dd class="curP" v-for="(item,index) in picList" @click="changeBg(item.url)">
+						<div class="HxtBoxPic" :style="'background-image: url(.' + item.url +');'"></div>
+					</dd>
+				</dl>
+				<dl>
+					<dt>输入图片链接更换壁纸</dt>
+					<dd>
+						<input class="HxtBoxInput" type="text" v-model="picUrl">
+					</dd>
+					<dd class="flexCc curP" @click="changeHttpsBg">
+						确认
+					</dd
+				</dl>
 			</div>
 		</div>
 		
 		<script>
 			var app = new Vue({
-				el: '#tuku',
+				el: '#bizhi',
 				data: {
-					heimu:false,
+					picUrl:"",
 					picList:[
 						{
-							url:"../images/hbg001.jpg",
+							url:"./images/hbg001.jpg",
 							name:"背景001"
 						},
 						{
-							url:"../images/icon002.gif",
-							name:"动图002"
+							url:"./images/hbg002.jpg",
+							name:"背景002"
 						},
 						{
-							url:"../images/appTb001.jpg",
-							name:"app图标001"
+							url:"./images/hbg003.jpg",
+							name:"背景003"
 						},
 						{
-							url:"../images/appTbzhifubao.png",
-							name:"支付宝图标"
+							url:"./images/hbg004.jpg",
+							name:"背景004"
 						},
-						{
-							url:"../images/appTbweixn.png",
-							name:"微信图标"
-						},
-						{
-							url:"../images/gameTbzwdzjs.jpg",
-							name:"植物大战僵尸"
-						},
-						{
-							url:"../images/icon001.jpg",
-							name:"图片001"
-						},
-						{
-							url:"../images/icon-wangluo.png",
-							name:"图标-网络"
-						},
-						{
-							url:"../images/icon-zhifubao.png",
-							name:"图标-支付宝"
-						},
-						{
-							url:"../images/icon-guanji.png",
-							name:"图标-关机"
-						},
-						
-						{
-							url:"../images/icon001.jpg",
-							name:"图片001"
-						},
-						{
-							url:"../images/icon-wangluo.png",
-							name:"图标-网络"
-						},
-						{
-							url:"../images/icon-zhifubao.png",
-							name:"图标-支付宝"
-						},
-						{
-							url:"../images/icon-guanji.png",
-							name:"图标-关机"
-						},
-						// {
-						// 	url:"../images/",
-						// 	name:""
-						// },
+	
 					]
 				},
 				mounted() {
 					
 				},
 				methods: {
-
+					changeHttpsBg(){
+						if(this.picUrl != ''){
+							this.changeBg(this.picUrl)
+						}
+					},
+					changeBg(url){
+						window.parent.postMessage({
+							"type":9,
+							"com":url
+						}, '*');
+					}
 				}
 			})
 		</script>
